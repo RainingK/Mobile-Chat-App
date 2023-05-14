@@ -2,7 +2,7 @@ name: Build and Upload Artifact
 on:
   push:
     branches:
-      - master
+      - upload-artifact
 
 jobs:
   build:
