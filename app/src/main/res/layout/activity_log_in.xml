@@ -31,7 +31,10 @@
 		app:layout_constraintTop_toBottomOf="@+id/app_logo"
 		app:layout_constraintVertical_bias="0.5"
 		android:background="@drawable/edit_text_background"
-		android:paddingLeft="15dp" />
+		android:paddingLeft="@dimen/email_password_padding"
+		android:paddingRight="@dimen/email_password_padding"
+		android:paddingStart="@dimen/email_password_padding"
+		android:paddingEnd="@dimen/email_password_padding"/>
 
 	<EditText
 		android:id="@+id/edit_text_password"
@@ -46,6 +49,9 @@
 		app:layout_constraintTop_toBottomOf="@+id/edit_text_email"
 		app:layout_constraintVertical_bias="0.1"
 		android:background="@drawable/edit_text_background"
-		android:paddingLeft="15dp" />
+		android:paddingLeft="@dimen/email_password_padding"
+		android:paddingRight="@dimen/email_password_padding"
+		android:paddingStart="@dimen/email_password_padding"
+		android:paddingEnd="@dimen/email_password_padding"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
