@@ -7,7 +7,7 @@
 	tools:context=".LogIn">
 
 	<ImageView
-		android:id="@+id/imageView"
+		android:id="@+id/app_logo"
 		android:layout_width="150dp"
 		android:layout_height="150dp"
 		app:layout_constraintBottom_toBottomOf="parent"
@@ -17,4 +17,35 @@
 		app:layout_constraintVertical_bias="0.1"
 		app:srcCompat="@drawable/mobile_chat_app_logo"
 		android:contentDescription="app_logo" />
+
+	<EditText
+		android:id="@+id/edit_text_email"
+		android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:ems="15"
+		android:hint="Email"
+		android:inputType="textEmailAddress"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/app_logo"
+		app:layout_constraintVertical_bias="0.5"
+		android:background="@drawable/edit_text_background"
+		android:paddingLeft="15dp" />
+
+	<EditText
+		android:id="@+id/edit_text_password"
+		android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:ems="15"
+		android:hint="Password"
+		android:inputType="textPassword"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/edit_text_email"
+		app:layout_constraintVertical_bias="0.1"
+		android:background="@drawable/edit_text_background"
+		android:paddingLeft="15dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
