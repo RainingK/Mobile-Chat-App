@@ -3,7 +3,7 @@ name: Build and Upload APK
 on:
   push:
     branches:
-      - upload-artifact
+      - master
 
 jobs:
   build:
