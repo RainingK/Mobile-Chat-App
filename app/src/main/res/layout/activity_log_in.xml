@@ -22,19 +22,19 @@
 		android:id="@+id/edit_text_email"
 		android:layout_width="wrap_content"
 		android:layout_height="48dp"
+		android:background="@drawable/edit_text_background"
 		android:ems="15"
 		android:hint="Email"
 		android:inputType="textEmailAddress"
+		android:paddingStart="@dimen/email_password_padding"
+		android:paddingLeft="@dimen/email_password_padding"
+		android:paddingEnd="@dimen/email_password_padding"
+		android:paddingRight="@dimen/email_password_padding"
 		app:layout_constraintBottom_toBottomOf="parent"
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/app_logo"
-		app:layout_constraintVertical_bias="0.5"
-		android:background="@drawable/edit_text_background"
-		android:paddingLeft="@dimen/email_password_padding"
-		android:paddingRight="@dimen/email_password_padding"
-		android:paddingStart="@dimen/email_password_padding"
-		android:paddingEnd="@dimen/email_password_padding"/>
+		app:layout_constraintVertical_bias="0.10" />
 
 	<EditText
 		android:id="@+id/edit_text_password"
@@ -66,14 +66,15 @@
 		app:layout_constraintEnd_toEndOf="parent"
 		app:layout_constraintStart_toStartOf="parent"
 		app:layout_constraintTop_toBottomOf="@+id/edit_text_password"
-		app:layout_constraintVertical_bias="0.3" />
+		app:layout_constraintVertical_bias="0.2" />
 
 	<Button
 		android:id="@+id/btn_sign_up"
 		android:layout_width="150dp"
 		android:layout_height="wrap_content"
-		android:text="Sign Up"
 		android:background="@drawable/login_btn_background"
+		android:onClick="goToSignUp"
+		android:text="Sign Up"
 		android:textColor="@color/white"
 		android:textSize="20sp"
 		app:layout_constraintBottom_toBottomOf="parent"
