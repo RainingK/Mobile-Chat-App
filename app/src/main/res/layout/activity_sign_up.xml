@@ -6,4 +6,84 @@
 	android:layout_height="match_parent"
 	tools:context=".SignUp">
 
+	<ImageView
+		android:id="@+id/app_logo"
+		android:layout_width="150dp"
+		android:layout_height="150dp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toTopOf="parent"
+		app:layout_constraintVertical_bias="0.1"
+		app:srcCompat="@drawable/mobile_chat_app_logo"
+		android:contentDescription="app_logo" />
+
+	<EditText
+		android:id="@+id/edit_text_name"
+		android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:background="@drawable/edit_text_background"
+		android:ems="15"
+		android:hint="Name"
+		android:inputType="text"
+		android:paddingStart="@dimen/email_password_padding"
+		android:paddingLeft="@dimen/email_password_padding"
+		android:paddingEnd="@dimen/email_password_padding"
+		android:paddingRight="@dimen/email_password_padding"
+		app:layout_constraintBottom_toTopOf="@+id/edit_text_email"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/app_logo"
+		app:layout_constraintVertical_bias="0.9" />
+
+	<EditText
+		android:id="@+id/edit_text_email"
+		android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:ems="15"
+		android:hint="Email"
+		android:inputType="textEmailAddress"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/app_logo"
+		app:layout_constraintVertical_bias="0.5"
+		android:background="@drawable/edit_text_background"
+		android:paddingLeft="@dimen/email_password_padding"
+		android:paddingRight="@dimen/email_password_padding"
+		android:paddingStart="@dimen/email_password_padding"
+		android:paddingEnd="@dimen/email_password_padding"/>
+
+	<EditText
+		android:id="@+id/edit_text_password"
+		android:layout_width="wrap_content"
+		android:layout_height="48dp"
+		android:ems="15"
+		android:hint="Password"
+		android:inputType="textPassword"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/edit_text_email"
+		app:layout_constraintVertical_bias="0.1"
+		android:background="@drawable/edit_text_background"
+		android:paddingLeft="@dimen/email_password_padding"
+		android:paddingRight="@dimen/email_password_padding"
+		android:paddingStart="@dimen/email_password_padding"
+		android:paddingEnd="@dimen/email_password_padding"/>
+
+	<Button
+		android:id="@+id/btn_sign_up"
+		android:layout_width="150dp"
+		android:layout_height="wrap_content"
+		android:background="@drawable/login_btn_background"
+		android:text="Sign Up"
+		android:textColor="@color/white"
+		android:textSize="20sp"
+		app:layout_constraintBottom_toBottomOf="parent"
+		app:layout_constraintEnd_toEndOf="parent"
+		app:layout_constraintStart_toStartOf="parent"
+		app:layout_constraintTop_toBottomOf="@+id/edit_text_password"
+		app:layout_constraintVertical_bias="0.2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
