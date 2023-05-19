@@ -21,6 +21,9 @@ class SignUp : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_sign_up)
 
+		// Hide the action bar
+		supportActionBar?.hide()
+
 //		Initialize the variables
 		editTextName = findViewById(R.id.edit_text_name)
 		editTextEmail = findViewById(R.id.edit_text_email)

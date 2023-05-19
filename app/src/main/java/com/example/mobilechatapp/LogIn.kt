@@ -21,6 +21,9 @@ class LogIn : AppCompatActivity() {
 		super.onCreate(savedInstanceState)
 		setContentView(R.layout.activity_log_in)
 
+//		Hide the toolbar
+		supportActionBar?.hide()
+
 //		Initialize variables
 		editTextEmail = findViewById(R.id.edit_text_email)
 		editTextPassword = findViewById(R.id.edit_text_password)
