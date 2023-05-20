@@ -7,7 +7,10 @@ import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.example.mobilechatapp.classes.User
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 
 class LogIn : AppCompatActivity() {
 	private lateinit var editTextEmail: EditText
@@ -16,6 +19,7 @@ class LogIn : AppCompatActivity() {
 	private lateinit var btnSignUp: Button
 
 	private lateinit var auth: FirebaseAuth
+	private lateinit var db: DatabaseReference
 
 	override fun onCreate(savedInstanceState: Bundle?) {
 		super.onCreate(savedInstanceState)
@@ -31,6 +35,7 @@ class LogIn : AppCompatActivity() {
 		btnSignUp = findViewById(R.id.btn_sign_up)
 
 		auth = FirebaseAuth.getInstance()
+		db = FirebaseDatabase.getInstance().reference
 	}
 
 	fun goToSignUp(view: View) {
