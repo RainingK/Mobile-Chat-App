@@ -3,7 +3,6 @@ package com.example.mobilechatapp
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -67,11 +66,9 @@ class SignUp : AppCompatActivity() {
 				if (task.isSuccessful) {
 					// Add user to database
 					addUserToDB(name, email, auth.currentUser?.uid!!)
-//					val uid = auth.currentUser?.uid!!
-//					Log.d("debug", uid)
-//					db.child("users").child(uid).setValue("User(name, email, uid)")
 					// Sign up success
 					val intent = Intent(this, MainActivity::class.java)
+					finish()
 					startActivity(intent)
 				} else {
 					// If sign up fails, display a message to the user.
