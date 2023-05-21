@@ -64,11 +64,11 @@ jobs:
           export ANDROID_HOME=$HOME/android-sdk
           export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
 
-      - name: Accept licenses
-        run: yes | sdkmanager --licenses
+      - name: Accept Android licenses
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
-      - name: Install SDK components
-        run: sdkmanager "platform-tools" "platforms;android-30" "emulator"
+      - name: Install Android build tools and platform
+        run: $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-30" "build-tools;30.0.3"
 
       - name: Start emulator
         run: |
