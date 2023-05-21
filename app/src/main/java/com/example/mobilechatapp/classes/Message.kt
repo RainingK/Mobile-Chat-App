@@ -4,6 +4,10 @@ class Message {
 	private var message: String? = null
 	private var senderID: String? = null
 
+	constructor() {
+
+	}
+
 	constructor(message: String, senderID: String) {
 		this.message = message
 		this.senderID = senderID

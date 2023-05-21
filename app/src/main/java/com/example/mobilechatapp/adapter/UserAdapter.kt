@@ -1,11 +1,13 @@
 package com.example.mobilechatapp.adapter
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.mobilechatapp.ChatActivity
 import com.example.mobilechatapp.R
 import com.example.mobilechatapp.classes.User
 
@@ -27,6 +29,12 @@ class UserAdapter(val context: Context, val userList: ArrayList<User>): Recycler
 	override fun onBindViewHolder(holder: ViewHolder, position: Int) {
 		val currentUser = userList[position]
 		holder.name.text = currentUser.getName()
+		holder.itemView.setOnClickListener {
+			val intent = Intent(context, ChatActivity::class.java)
+			intent.putExtra("name", currentUser.getName())
+			intent.putExtra("uid", currentUser.getUid())
+			context.startActivity(intent)
+		}
 	}
 
 }

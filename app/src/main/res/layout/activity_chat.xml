@@ -28,7 +28,7 @@
 		app:layout_constraintStart_toStartOf="parent">
 
 		<EditText
-			android:id="@+id/chat_edit_test"
+			android:id="@+id/chat_edit_text"
 			android:layout_width="wrap_content"
 			android:layout_height="50dp"
 			android:layout_weight="90"
@@ -44,6 +44,7 @@
 			android:layout_width="50dp"
 			android:layout_height="50dp"
 			android:layout_weight="10"
+			android:onClick="sendMessage"
 			app:srcCompat="@android:drawable/ic_menu_send" />
 	</LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
