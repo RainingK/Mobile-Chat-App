@@ -33,19 +33,19 @@ jobs:
       - name: Set up environment variables
         run: |
           echo 'export ANDROID_HOME=$HOME/android-sdk' >> $GITHUB_ENV
-          echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools' >> $GITHUB_ENV
+          echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools' >> $GITHUB_ENV
 
       - name: Accept Android licenses
-        run: yes | sdkmanager --licenses
+        run: yes | $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager --licenses
 
       - name: Install Android build tools and platform
-        run: sdkmanager "platforms;android-30" "build-tools;30.0.3"
+        run: $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "platforms;android-30" "build-tools;30.0.3"
 
       - name: Install emulator dependencies
-        run: sdkmanager "system-images;android-30;google_apis;x86"
+        run: $ANDROID_HOME/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86"
 
       - name: Create emulator
-        run: echo no | avdmanager create avd -n emulator -k "system-images;android-30;google_apis;x86" --device "Nexus 5X"
+        run: echo no | $ANDROID_HOME/cmdline-tools/latest/bin/avdmanager create avd -n emulator -k "system-images;android-30;google_apis;x86" --device "Nexus 5X"
 
       - name: Start emulator
         run: $ANDROID_HOME/emulator/emulator -avd emulator -no-audio -no-window -accel auto -wipe-data &
