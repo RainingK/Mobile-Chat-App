@@ -51,10 +51,10 @@ jobs:
         run: $ANDROID_HOME/emulator/emulator -avd emulator -no-audio -no-window -accel auto -wipe-data &
 
       - name: Wait for emulator to start
-        run: | 
-          curl -o wait-for-emulator.sh https://raw.githubusercontent.com/android/android-test/actions/sdk-tools/scripts/wait-for-emulator.sh
-          chmod +x wait-for-emulator.sh
-          ./wait-for-emulator.sh
+        run: |
+          emulator @emulator_name -no-audio -no-window -accel on -gpu off &
+          echo "Waiting for the emulator to start..."
+          adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
 
       - name: Run tests
         run: ./gradlew connectedCheck
