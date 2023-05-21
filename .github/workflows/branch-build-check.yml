@@ -20,8 +20,8 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build APK
-        run: ./gradlew assembleDebug
+#      - name: Build APK
+#        run: ./gradlew assembleDebug
 
 #      - name: Download and extract Android SDK
 #        run: |
@@ -58,19 +58,24 @@ jobs:
 
       - name: Install Android SDK
         run: |
-          wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip -O cmdline-tools.zip
-          unzip -q cmdline-tools.zip -d "$ANDROID_HOME/cmdline-tools"
-          rm cmdline-tools.zip
-          export PATH="$ANDROID_HOME/cmdline-tools/tools/bin:$PATH"
-          yes | sdkmanager --licenses
-          sdkmanager "platform-tools" "platforms;android-30" "emulator"
+          wget https://dl.google.com/android/repository/sdk-tools-linux-4333796.zip -O android-sdk.zip
+          unzip -q android-sdk.zip -d $HOME/android-sdk
+          rm android-sdk.zip
+          export ANDROID_HOME=$HOME/android-sdk
+          export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools
+
+      - name: Accept licenses
+        run: yes | sdkmanager --licenses
+
+      - name: Install SDK components
+        run: sdkmanager "platform-tools" "platforms;android-30" "emulator"
 
       - name: Start emulator
         run: |
-          avdmanager create avd -n emulator_name -k "system-images;android-30;google_apis;x86" --force
-          $ANDROID_HOME/emulator/emulator -avd emulator_name -no-audio -no-window -accel on -gpu off &
-          echo "Waiting for the emulator to start..."
+          echo "no" | avdmanager create avd -n emulator_name -k "system-images;android-30;google_apis;x86"
+          $ANDROID_HOME/emulator/emulator -avd emulator_name -no-audio -no-window -accel on -gpu off -verbose &
           adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+      
 
       - name: Run tests
         run: ./gradlew connectedCheck
