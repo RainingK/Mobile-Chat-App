@@ -72,9 +72,11 @@ jobs:
 
       - name: Start emulator
         run: |
-          echo "no" | avdmanager create avd -n emulator_name -k "system-images;android-30;google_apis;x86"
-          $ANDROID_HOME/emulator/emulator -avd emulator_name -no-audio -no-window -accel on -gpu off -verbose &
-          adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
+          echo no | android create avd --force -n emulator_name -t "android-30" --abi "google_apis/x86"
+          emulator -avd emulator_name -no-audio -no-window -accel on -gpu off -verbose &
+
+      - name: Wait for emulator to start
+        run: adb wait-for-device shell 'while [[ -z $(getprop sys.boot_completed) ]]; do sleep 1; done;'
       
 
       - name: Run tests
