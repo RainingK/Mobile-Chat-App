@@ -23,14 +23,26 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: Install Android SDK
-        uses: android-actions/setup-android-sdk@v2
-        with:
-          sdk-platform: 'platforms;android-30'
-          sdk-platform-tools: true
+      - name: Download and extract Android SDK
+        run: |
+          curl -o android-sdk.zip https://dl.google.com/android/repository/commandlinetools-linux-6858069_latest.zip
+          mkdir -p $HOME/android-sdk
+          unzip -qq android-sdk.zip -d $HOME/android-sdk
+          rm android-sdk.zip
+
+      - name: Set up environment variables
+        run: |
+          echo 'export ANDROID_HOME=$HOME/android-sdk' >> $GITHUB_ENV
+          echo 'export PATH=$PATH:$ANDROID_HOME/cmdline-tools/bin:$ANDROID_HOME/tools/bin:$ANDROID_HOME/platform-tools' >> $GITHUB_ENV
+
+      - name: Accept Android licenses
+        run: yes | sdkmanager --licenses
+
+      - name: Install Android build tools and platform
+        run: sdkmanager "platforms;android-30" "build-tools;30.0.3"
 
       - name: Install emulator dependencies
-        run: sdkmanager --install "system-images;android-30;google_apis;x86"
+        run: sdkmanager "system-images;android-30;google_apis;x86"
 
       - name: Create emulator
         run: echo no | avdmanager create avd -n emulator -k "system-images;android-30;google_apis;x86" --device "Nexus 5X"
