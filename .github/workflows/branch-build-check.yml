@@ -23,5 +23,19 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: Run Tests
-        run: ./gradlew test
+      - name: Set up Android Emulator
+        uses: actions/setup-android-emulator@v1
+        with:
+          api-level: 30
+          package: 'system-images;android-30;google_apis;x86'
+          emulator-version: '30.7.5'
+          architecture: x86
+
+      - name: Start Android Emulator
+        run: emulator -avd emulator_name -no-window -no-audio
+
+      - name: Wait for Emulator to start
+        run: android-wait-for-emulator
+
+      - name: Run Instrumented Tests
+        run: ./gradlew connectedAndroidTest
