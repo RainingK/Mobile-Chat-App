@@ -23,19 +23,23 @@ jobs:
       - name: Build APK
         run: ./gradlew assembleDebug
 
-      - name: Set up Android Emulator
-        uses: actions/setup-android-emulator@v1
+      - name: Install Android SDK
+        uses: android-actions/setup-android-sdk@v2
         with:
-          api-level: 30
-          package: 'system-images;android-30;google_apis;x86'
-          emulator-version: '30.7.5'
-          architecture: x86
+          sdk-platform: 'platforms;android-30'
+          sdk-platform-tools: true
 
-      - name: Start Android Emulator
-        run: emulator -avd emulator_name -no-window -no-audio
+      - name: Install emulator dependencies
+        run: sdkmanager --install "system-images;android-30;google_apis;x86"
 
-      - name: Wait for Emulator to start
+      - name: Create emulator
+        run: echo no | avdmanager create avd -n emulator -k "system-images;android-30;google_apis;x86" --device "Nexus 5X"
+
+      - name: Start emulator
+        run: $ANDROID_HOME/emulator/emulator -avd emulator -no-audio -no-window -accel auto -wipe-data &
+
+      - name: Wait for emulator to start
         run: android-wait-for-emulator
 
-      - name: Run Instrumented Tests
-        run: ./gradlew connectedAndroidTest
+      - name: Run tests
+        run: ./gradlew connectedCheck
